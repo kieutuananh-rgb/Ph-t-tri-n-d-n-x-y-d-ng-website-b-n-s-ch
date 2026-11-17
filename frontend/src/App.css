@@ -1098,4 +1098,39 @@ main {
     font-size: 12px;
   }
 }
+/* =========================================
+   FIX LỖI KHÔNG HIỂN THỊ CHỮ TRONG Ô NHẬP
+========================================= */
 
+input,
+textarea,
+select {
+  color: #30271f !important;
+  background-color: #fffdfa !important;
+  -webkit-text-fill-color: #30271f !important;
+  caret-color: #30271f !important;
+  opacity: 1 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #998a7c !important;
+  -webkit-text-fill-color: #998a7c !important;
+  opacity: 1 !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  color: #30271f !important;
+  background-color: #ffffff !important;
+  border-color: #a87950 !important;
+  outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #30271f !important;
+  box-shadow: 0 0 0 1000px #fffdfa inset !important;
+}
