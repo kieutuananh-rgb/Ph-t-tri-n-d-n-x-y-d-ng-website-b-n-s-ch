@@ -1,0 +1,18 @@
+# Node modules
+node_modules/
+
+# Environment variables - chua mat khau
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+logs/
+
+# Build
+dist/
+build/
+
+# IDE
+.vscode/
