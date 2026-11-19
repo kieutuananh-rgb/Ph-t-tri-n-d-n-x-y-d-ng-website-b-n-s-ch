@@ -1,8 +1,15 @@
+
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
 const db = require("./config/database");
+
+const categoryRoutes = require("./routes/categoryRoutes");
+const bookRoutes = require("./routes/bookRoutes");
+const cartRoutes = require("./routes/cartRoutes");
+const authRoutes = require("./routes/authRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 const app = express();
 
@@ -10,12 +17,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// API kiểm tra Backend
+// Routes
+app.use("/api/categories", categoryRoutes);
+app.use("/api/books", bookRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/orders", orderRoutes);
+
+// Kiểm tra Backend
 app.get("/", (req, res) => {
     res.send("Backend website ban sach dang hoat dong!");
 });
 
-// API kiểm tra kết nối Database
+// Kiểm tra kết nối MySQL
 app.get("/api/test-db", async (req, res) => {
     try {
         const [rows] = await db.query("SELECT DATABASE() AS database_name");
@@ -34,7 +48,7 @@ app.get("/api/test-db", async (req, res) => {
     }
 });
 
-// Khởi động Server
+// Khởi chạy Server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
